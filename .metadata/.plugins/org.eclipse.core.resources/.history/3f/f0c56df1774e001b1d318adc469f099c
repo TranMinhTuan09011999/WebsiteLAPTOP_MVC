@@ -1,0 +1,79 @@
+package minhtuan.admin.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import minhtuan.admin.dao.OrderDAO;
+import minhtuan.model.Order;
+import minhtuan.model.OrderDetail;
+
+@Service("orderService")
+@Transactional
+public class OrderService {
+
+	@Autowired
+	OrderDAO orderDAO;
+
+	/**
+	 * Sá»§a Ä‘Æ¡n hÃ ng
+	 * 
+	 * @param order
+	 */
+	public void updateOrder(Order order) {
+		orderDAO.updateOrder(order);
+	}
+
+	/**
+	 * Láº¥y mÃ£ Ä‘Æ¡n hÃ ng
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Order getIDOrder(Integer id) {
+		return orderDAO.getIDOrder(id);
+	}
+
+	/**
+	 * Láº¥y danh sÃ¡ch Ä‘Æ¡n hÃ ng
+	 * 
+	 * @return
+	 */
+	public List<Order> getAllOrder() {
+		return orderDAO.getAllOrder();
+	}
+
+	/**
+	 * TÃ¬m kiáº¿m Ä‘Æ¡n hÃ ng
+	 * 
+	 * @param search
+	 * @return
+	 */
+	public List<Order> searchOrder(String search) {
+		return orderDAO.searchOrder(search);
+	}
+
+	/**
+	 * Lá»�c tráº¡ng thÃ¡i
+	 * 
+	 * @param filter
+	 * @return
+	 */
+	public List<Order> filterStatus(String filter) {
+		return orderDAO.filterStatus(filter);
+	}
+
+	public List<Order> loadOrderPage(String page) {
+		return orderDAO.loadOrderPage(page);
+	}
+
+	public int getRowOrder() {
+		return orderDAO.getRowOrder();
+	}
+
+	public List<OrderDetail> getAllOrderDetailByID(Integer id) {
+		return orderDAO.getAllOrderDetailByID(id);
+	}
+}
